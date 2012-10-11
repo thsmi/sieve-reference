@@ -4,4 +4,4 @@ The sieve reference is used by the sieve addon. But you can also access it direc
 http://thsmi.github.com/sieve-reference/en/index.html
 
 
-Contributions are highly welcome
+Contributions are highly welcome. Just submit a patch. 

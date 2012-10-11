@@ -1,0 +1,55 @@
+h1 {
+	font-size: 18pt;
+	color: #666;
+	padding: 4px 0px 4px 0px;
+	margin: 0px 0px 12px 0px;
+}
+
+
+h2 {
+	font-size: 12pt;
+	color: #666;
+	padding: 0px 0px 2px 0px;
+	margin-bottom: 5px;
+	border-bottom: 1px dotted #bbb;
+	font-weight: normal;
+}
+
+body 
+{
+  font-family: Georgia, Bitstream Vera, Serif;
+  font-size: 10pt;
+  padding: 0px;
+  margin: 20px;
+  background-color: white;
+  color: black;
+}
+
+code
+{
+  color: #666;
+}
+
+p 
+{
+  text-align:justify;
+  line-height: 1.7em;
+  margin-bottom: 2em;
+}
+
+a 
+{
+  color: #555;
+  text-decoration:underline;
+}
+
+a:visited 
+{
+  color: #666;
+}
+
+a:hover 
+{
+  color: black;
+  background-color: lightgray;
+}

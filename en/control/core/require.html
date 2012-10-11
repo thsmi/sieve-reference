@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Core:Require Control Structure</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="./../../../style.css" rel="Stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Require</h1>
+
+    <h2>Syntax</h2>
+    <p>
+      require 
+      <em>&lt;capabilities: <a href="./../../atoms/core/stringlist.html">string-list</a>&gt;</em>;
+    </p>
+         
+    <h2>Description</h2>
+    <p>
+      The require action notes that a script makes use of a certain
+      extension. Multiple capabilities can be declared with a single require.
+    </p>
+    <p>
+      The require command must be used before any other command. An error 
+      occurs if a require appears after a command other than require.
+    </p>
+
+    <h2>Example</h2>
+    <div>
+      <code>
+        require "fileinto";
+        require "vacation";
+      </code>
+    </div>    
+    <p>
+      Note that the above script is identical to the one below.
+    </p>
+    <div>
+      <code>
+        require ["fileinto", "reject"];
+      </code>
+    </div>
+        
+    <h2>Module</h2>
+    <p>
+      Core : Requires no import statement
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC3028
+    </p> 
+  </body>
+</html>

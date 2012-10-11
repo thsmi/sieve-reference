@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Core:Strings</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="./../../../style.css" rel="Stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Strings</h1>
+    
+    <h2>Syntax</h2>  
+    <p>
+      <tt>"</tt> <em>*(CHAR)</em> <tt>"</tt>
+    </p>
+    <p>
+      <tt>text:</tt> <em>*( '<tt>&nbsp;</tt>' / TAB) (<a href="./comments.html">hash-comment</a>)<br/>
+      *([CHAR-NOT-DOT *CHAR] CRLF / <tt>.</tt> 1*CHAR CRLF)</em><br/>
+      <tt>.</tt><br/>
+    </p>
+
+    <h2>Description</h2>
+    <p>
+      Scripts involve large numbers of strings as they are used for pattern
+      matching, addresses, textual bodies, etc.  Typically, short quoted
+      strings suffice for most uses, but a more convenient form is provided
+      for longer strings such as bodies of messages.    
+    </p>
+    <p>
+      A quoted string starts and ends with a single double quote (the "
+      character, ASCII 34). A backslash (the \ character, ASCII 92) is used
+      as escape character. Thus the two-character sequence \\ represents a 
+      single backslash or \" a doublequote within the string, respectively.
+      Any other escape sequence (such as "\a" in a context where "a" has no 
+      special meaning) is interpreted as if there were no backslash (in this 
+      case, "\a" is just "a")
+    </p>
+    <p>
+      Non-printing characters such as tabs, CR, LF, NUL (ASCII 0) and control 
+      characters are permitted in quoted strings. Quoted strings may span 
+      multiple lines.        
+    </p>
+    <p>
+      For entering larger amounts of text, such as an email message, a
+      multi-line form is allowed. It starts with the keyword "text:",
+      followed by a linebreak, and ends with the sequence of a linebreak, 
+      a single period, and another linebreak. In order to allow the message 
+      to contain lines with a single-dot, lines are dot-stuffed. That is, when
+      composing a message body, an extra '.' is added before each line which 
+      begins with a '.'.  When the server interprets the script, these extra 
+      dots are removed. Note that a line that begins with a dot followed by a 
+      non-dot character is not interpreted dot-stuffed; that is, ".foo" is 
+      interpreted as ".foo". However, because this is potentially ambiguous, 
+      scripts should be properly dot-stuffed so such lines do not appear.
+    </p>
+    <p>
+      Note that a hashed comment or whitespace may occur in between the "text:"
+      and the linebreak (CRLF), but not with comments are not allowed here.
+    </p>
+    <h2>Example</h2>
+    <div>
+      <code>
+      </code>
+    </div>
+    <h2>Module</h2>
+    <p>
+      Core : Requires no import statement
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC3028
+    </p> 
+  </body>
+</html>   

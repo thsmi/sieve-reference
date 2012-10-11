@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Core:Address Test</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="./../../../style.css" rel="Stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Address</h1>
+
+    <h2>Syntax</h2>
+    <p>
+      address 
+      <em>[<a href="./../../operators/core/addresspart.html">ADDRESS-PART</a>]</em>
+      <em>[<a href="./../../operators/core/comparator.html">COMPARATOR</a>]</em> 
+      <em>[<a href="./../../operators/core/matchtype.html">MATCH-TYPE</a>]</em>
+      <em>&lt;header-list: <a href="./../../atoms/core/stringlist.html">string-list</a>&gt;</em>
+      <em>&lt;key-list: <a href="./../../atoms/core/stringlist.html">string-list</a>&gt;</em>
+    </p>
+         
+    <h2>Description</h2>
+    <p>
+      The address test matches Internet addresses in structured headers
+      that contain addresses. It returns true if any header contains any
+      key in the specified part of the address, as modified by the
+      comparator and the match keyword.
+
+      Like <a href="./envelope.html">envelope</a> and <a href="./header.html">header</a>,
+      this test returns true if any combination of the header-list and key-list 
+      arguments match.
+
+      Internet email addresses have the somewhat awkward characteristic 
+      that the local-part to the left of the at-sign is considered case 
+      sensitive, and the domain-part to the right of the at-sign is case 
+      insensitive. The "address" command does not deal with this itself, 
+      but provides the ADDRESS-PART argument for allowing users to deal 
+      with it.
+
+      The address primitive never acts on the phrase part of an email
+      address, nor on comments within that address.  It also never acts on
+      group names, although it does act on the addresses within the group
+      construct.
+
+      Implementations restrict the address test to headers that contain 
+      addresses. It is guaranteed to support at least From, To, Cc, Bcc,
+      Sender, Resent-From, Resent-To headers.
+    </p>
+
+    <h2>Example</h2>
+    <div>
+      <code>
+        if address :is :all "from" "tim@example.com" {<br/>
+                discard;
+      </code>
+    </div>
+        
+    <h2>Module</h2>
+    <p>
+      Core : Requires no import statement
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC3028
+    </p> 
+  </body>
+</html>

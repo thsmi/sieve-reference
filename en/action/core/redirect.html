@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Core:Redirect Action</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="./../../../style.css" rel="Stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Redirect</h1>
+    
+    <h2>Syntax</h2>
+    <p>
+      redirect <em>&lt;address : <a href="./../../atoms/core/string.html">string</a>&gt;</em> ;
+    </p>
+             
+    <h2>Description</h2>
+    <p>
+      The "redirect" action is used to send the message to another user at
+      a supplied address, as a mail forwarding feature does.  The
+      "redirect" action makes no changes to the message body or existing
+      headers, but it may add new headers.  The "redirect" modifies the
+      envelope recipient.
+    </p>
+
+    <h2>Example</h2>
+    <p>
+      A simple script can be used for redirecting all mail:
+    </p>
+    <div>
+      <code>
+        redirect "bart@example.edu";
+      </code>
+    </div>
+
+    <h2>Module</h2>
+    <p>
+      Core - Requires statement not needed
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC3028
+    </p> 
+  </body>
+</html>

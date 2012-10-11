@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Core:Discard Action</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="./../../../style.css" rel="Stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Discard</h1>
+
+    <h2>Syntax</h2>
+    <p>
+      discard;
+    </p>
+             
+    <h2>Description</h2>
+    <p>
+      Discard is used to silently throw away the message.  It does so by
+      simply canceling the implicit keep.  If discard is used with other
+      actions, the other actions still happen.  Discard is compatible with
+      all other actions.  (For instance fileinto+discard is equivalent to
+      fileinto.)
+    </p>
+    <p>
+      Discard is silent, it does not return a non-delivery notification of 
+      any kind.
+    </p>
+
+    <h2>Example</h2>
+    <p>
+      In the following script, any mail from "idiot@example.edu" is thrown out.
+    </p>
+    <div>
+      <code>
+        if header :contains ["from"] ["idiot@example.edu"] {<br/>
+           discard;<br/>
+        }
+      </code>
+    </div>
+        
+    <h2>Module</h2>
+    <p>
+      Core : Requires no import statement
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC3028
+    </p> 
+  </body>
+</html>

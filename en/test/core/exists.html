@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Core:Exists Test</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="./../../../style.css" rel="Stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Exists</h1>
+    
+    <h2>Syntax</h2>
+    <p>
+      exists <em>&lt;header-names: <a href="./../../atoms/core/stringlist.html">test-list</a>&gt;</em>
+    </p>
+             
+    <h2>Description</h2>
+    <p>
+      The "exists" test is true if the headers listed in the header-names
+      argument exist within the message.  All of the headers must exist or
+      the test is false. 
+    </p>
+
+    <h2>Example</h2>
+    <p>
+      The following example throws out mail that doesn't have a From header
+      and a Date header.
+    </p>
+    <div>
+      <code>
+        if not exists ["From","Date"] {<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;discard;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+      </code>
+    </div>
+        
+    <h2>Module</h2>
+    <p>
+      Core : Requires no import statement
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC3028
+    </p> 
+  </body>
+</html>             

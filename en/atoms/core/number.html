@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Core:Numbers</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="./../../../style.css" rel="Stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Numbers</h1>
+    
+    <h2>Syntax</h2>
+    <p>
+      <em>1*DIGIT ["K" / "M" / "G"]</em>
+    </p>
+                 
+    <h2>Description</h2>
+    <p>
+      Numbers are given as ordinary positive decimal numbers. However, those
+      numbers that have a tendency to be fairly large, such as message
+      sizes, may have a "K", "M", or "G" appended to indicate a multiple of
+      a power of two. To be comparable with the power-of-two-based
+      versions of SI units that computers frequently use, K specifies
+      kibi-, or 1,024 (2^10) times the value of the number; M specifies
+      mebi-, or 1,048,576 (2^20) times the value of the number; and G
+      specifies tebi-, or 1,073,741,824 (2^30) times the value of the
+      number.
+    </p>
+    <p>
+      Only positive integers are permitted.
+    </p>
+    <p>
+      The magnitude in numbers is Implementor specific. But it is
+      guaranteed to be at least 31 bits.
+    </p>
+
+    <h2>Example</h2>
+    <div>
+      <code>
+        if size :over 100K {<br />
+        &nbsp;&nbsp;&nbsp;discard;<br />
+        }<br />   
+      </code>
+    </div>
+        
+    <h2>Module</h2>
+    <p>
+      Core : Requires no import statement
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC3028
+    </p> 
+  </body>
+</html>

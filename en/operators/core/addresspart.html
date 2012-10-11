@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Core:Address Part Operator</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="./../../../style.css" rel="Stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Address Part</h1>
+    
+    <h2>Syntax</h2>
+    <p>
+      ":localpart" / ":domain" / ":all"
+    </p>
+             
+    <h2>Description</h2>
+    <p>
+      Addresses are one of the most frequent things represented as strings.
+      These are structured, and being able to compare against the local-
+      part or the domain of an address is useful, so some tests that act
+      exclusively on addresses take an additional optional argument that
+      specifies what the test acts on.
+    </p>
+    <p>
+      These optional arguments are ":localpart", ":domain", and ":all",
+      which act on the local-part (left-side), the domain part (right-
+      side), and the whole address.
+    </p>
+    <p>
+      The kind of comparison done, such as whether or not the test done is
+      case-insensitive, is specified as a comparator argument to the test.
+    </p>
+    <p>
+      If an optional address-part is omitted, the default is ":all".
+    </p>
+    <p>
+      It is an error to give more than one of these arguments to a given
+      command.
+    </p>        
+    <h2>Module</h2>
+    <p>
+      Core : Requires no import statement
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC3028
+    </p> 
+  </body>
+</html>

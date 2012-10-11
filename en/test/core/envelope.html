@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Core:Envelope Test</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="./../../../style.css" rel="Stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Envelope</h1>
+    
+    <h2>Syntax</h2>
+    <p>
+      envelope
+      <em>[<a href="./../../operators/core/comparator.html">COMPARATOR</a>]</em>      
+      <em>[<a href="./../../operators/core/addresspart.html">ADDRESS-PART</a>]</em>
+      <em>[<a href="./../../operators/core/matchtype.html">MATCH-TYPE</a>]</em>      
+      <em>&lt;envelope-part: <a href="./../../atoms/core/stringlist.html">string-list</a>&gt;</em>
+      <em>&lt;key-list: <a href="./../../atoms/core/stringlist.html">string-list</a>&gt;</em>
+    </p>
+             
+    <h2>Description</h2>
+    <p>
+      The "envelope" test is true if the specified part of the SMTP (or
+      equivalent) envelope matches the specified key.
+    </p>
+    <p>
+      If one of the envelope-part strings is (case insensitive) "from",
+      then matching occurs against the FROM address used in the SMTP MAIL
+      command.
+    </p>
+    <p>
+      If one of the envelope-part strings is (case insensitive) "to", then
+      matching occurs against the TO address used in the SMTP RCPT command
+      that resulted in this message getting delivered to this user.  Note
+      that only the most recent TO is available, and only the one relevant
+      to this user.
+    </p>
+    <p>
+      The envelope-part is a string list and may contain more than one
+      parameter, in which case all of the strings specified in the key-list
+      are matched against all parts given in the envelope-part list.
+    </p>
+    <p>
+      Like address and header, this test returns true if any combination of
+      the envelope-part and key-list arguments is true.
+    </p>
+    <p>
+      All tests against envelopes drop source routes.
+    </p>
+    <p>
+      If the SMTP transaction involved several RCPT commands, only the data
+      from the RCPT command that caused delivery to this user is available
+      in the "to" part of the envelope.
+    </p>
+
+
+    <h2>Example</h2>
+    <div>
+      <code>
+        require "envelope";<br/>
+        if envelope :all :is "from" "tim@example.com" {<br/>
+        &nbsp;&nbsp;discard;<br/>
+        }<br/>
+      </code>
+    </div>
+        
+    <h2>Module</h2>
+    <p>
+      Core : <a href="./../../control/core/require.html">require "envelope";</a> 
+      statement needed
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC3028
+    </p> 
+  </body>
+</html>

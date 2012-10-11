@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Core:If Control Structure</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="./../../../style.css" rel="Stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>If</h1>
+
+    <h2>Syntax</h2>
+    <p>
+      if 
+      <em>&lt;test1: <a href="./../../test/index.html">test</a>&gt;</em>
+      <em>&lt;block1: <a href="./../../atoms/core/block.html">block</a>&gt;</em>
+    </p>
+    <p>
+      elsif
+      <em>&lt;test2: <a href="./../../test/index.html">test</a>&gt;</em>
+      <em>&lt;block2: <a href="./../../atoms/core/block.html">block</a>&gt;</em>
+    </p>
+    <p>
+      else
+      <em>&lt;block3: <a href="./../../atoms/core/block.html">block</a>&gt;</em>
+    </p>
+         
+    <h2>Description</h2>
+    <p>
+      There are three pieces to if: "if", "elsif", and "else".  Each is
+      actually a separate command in terms of the grammar. However, an
+      elsif must only follow an if, and an else must follow only either an
+      if or an elsif. An error occurs if these conditions are not met.
+    </p>
+    <p>
+      The semantics are similar to those of any of the many other
+      programming languages these control commands appear in. When the
+      interpreter sees an "if", it evaluates the test associated with it.
+      If the test is true, it executes the block associated with it.
+    </p>
+    <p>
+      If the test of the "if" is false, it evaluates the test of the first
+      "elsif" (if any). If the test of "elsif" is true, it runs the
+      elsif's block. An elsif may be followed by an elsif, in which case,
+      the interpreter repeats this process until it runs out of elsifs.
+    </p>
+    <p>
+      When the interpreter runs out of elsifs, there may be an "else" case.
+      If there is, and none of the if or elsif tests were true, the
+      interpreter runs the else case.    
+    </p>
+
+    <h2>Example</h2>
+    <div>
+      <code>
+        require "fileinto";<br/>
+        if header :contains "from" "coyote" {<br/>
+        &nbsp;&nbsp;&nbsp;redirect "acm@example.edu";<br/>
+        } elsif header :contains ["subject"] ["$$$"] {<br/>
+        &nbsp;&nbsp;&nbsp;discard;<br/>
+        } else {<br/>
+        &nbsp;&nbsp;&nbsp;fileinto "INBOX";<br/>
+        }<br/>
+      </code>
+    </div>
+            
+    <h2>Module</h2>
+    <p>
+      Core : Requires no import statement
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC3028
+    </p> 
+  </body>
+</html>

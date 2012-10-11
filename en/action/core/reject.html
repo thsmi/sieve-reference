@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Core:Reject Action</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="./../../../style.css" rel="Stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Reject</h1>
+         
+    <h2>Syntax</h2>
+    <p>
+      reject <em>&lt;reason : <a href="./../../atoms/core/string.html">string</a>&gt;</em> ;
+    </p>
+             
+    <h2>Description</h2>
+    <p>
+     The "reject" action refuses delivery of a message by sending
+     back a notification to the sender. It resends the message to 
+     the sender, wrapping it in a "reject" form, noting that it 
+     was rejected by the recipient. 
+    </p>    
+
+    <h2>Example</h2>
+    <p>
+      In the following script, rejects any matching messages and 
+      returns it to the sender.
+    </p>
+    <div>
+      <code>
+        if header :contains "from" "coyote@desert.example.org" {<br/>
+                reject "I am not taking mail from you, and I don't want<br/>
+                your birdseed, either!";<br/>
+             }
+      </code>
+    </div>
+
+    <h2>Module</h2>
+    <p>
+      Core - <a href="./../../control/core/require.html">require "reject";</a> 
+      statement suggested
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC3028
+    </p> 
+  </body>
+</html>

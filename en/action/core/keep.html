@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Core:Keep Action</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="./../../../style.css" rel="Stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Keep</h1>
+        
+    <h2>Syntax</h2>
+    <p>
+      keep;
+    </p>
+    
+    <h2>Description</h2>
+    <p>
+      The "keep" action is whatever action is taken in lieu of all other
+      actions, if no filtering happens at all; generally, this simply means
+      to file the message into the user's main mailbox.  This command
+      provides a way to execute this action without needing to know the
+      name of the user's main mailbox, providing a way to call it without
+      needing to understand the user's setup, or the underlying mail
+      system.
+    </p>
+    <p>
+      For instance, in an implementation where the IMAP server is running
+      scripts on behalf of the user at time of delivery, a keep command is
+      equivalent to a fileinto "INBOX".
+    </p>
+
+    <h2>Example</h2>
+    <div>
+      <code>
+        if size :under 1M { keep; } else { discard; }
+      </code>
+    </div>
+    <p>
+      Note that the above script is identical to the one below.
+    </p>
+    <div>
+      <code>
+        if not size :under 1M { discard; }
+      </code>
+    </div>
+
+    <h2>Module</h2>
+    <p>
+      Core : Requires no import statement
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC3028
+    </p> 
+  </body>
+</html>

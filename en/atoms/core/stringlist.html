@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Core:String Lists</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="./../../../style.css" rel="Stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>String Lists</h1>
+    
+    <h2>Syntax</h2>
+    <p>
+      <em>
+        "[" <a href="./string.html">string</a> 
+        *("," <a href="./string.html">string</a>) "]" 
+        / <a href="./string.html">string</a>
+      </em>
+    </p>
+                 
+    <h2>Description</h2>
+    <p>
+      When matching patterns, it is frequently convenient to match against
+      groups of strings instead of single strings. For this reason, a list
+      of strings is allowed in many tests, implying that if the test is
+      true using any one of the strings, then the test is true.
+      Implementations are encouraged to use short-circuit evaluation in
+      these cases.
+    </p>
+    <p>
+      For instance, the test <code>header :contains ["To", "Cc"]
+      ["me@example.com", "me00@landru.example.edu"]</code> is true if either the
+      To header or Cc header of the input message contains either of the
+      e-mail addresses "me@example.com" or "me00@landru.example.edu".
+    </p>
+    <p>    
+      Conversely, in any case where a list of strings is appropriate, a
+      single string is allowed without being a member of a list: it is
+      equivalent to a list with a single member. This means that the test
+      <code>exists "To"</code> is equivalent to the test <code>exists ["To"]</code>.
+    </p>
+        
+    <h2>Module</h2>
+    <p>
+      Core : Requires no import statement
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC3028
+    </p> 
+  </body>
+</html>

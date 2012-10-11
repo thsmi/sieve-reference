@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Core:Size Test</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="./../../../style.css" rel="Stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Size</h1>
+    
+    <h2>Syntax</h2>
+    <p>
+      size 
+      <em>&lt;":over" / ":under"&gt;</em>
+      <em>&lt;limit: <a href="./../../atoms/core/number.html">number</a>&gt;</em>
+    </p>
+             
+    <h2>Description</h2>
+    <p>
+      The "size" test deals with the size of a message.  It takes either a
+      tagged argument of ":over" or ":under", followed by a number
+      representing the size of the message.
+    </p>
+    <p>
+      If the argument is ":over", and the size of the message is greater
+      than the number provided, the test is true; otherwise, it is false.
+    </p>
+    <p>
+      If the argument is ":under", and the size of the message is less than
+      the number provided, the test is true; otherwise, it is false.
+    </p>
+    <p>
+      Exactly one of ":over" or ":under" must be specified, and anything
+      else is an error.
+    </p>
+    <p>
+      The size of a message is defined to be the number of octets (bits) from the
+      initial header until the last character in the message body.
+    </p>
+    <p>
+      Note that for a message that is exactly 4,000 octets, the message is
+      neither ":over" 4000 octets nor ":under" 4000 octets.     
+    </p>
+
+    <h2>Module</h2>
+    <p>
+      Core : Requires no import statement
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC3028
+    </p> 
+  </body>
+</html>

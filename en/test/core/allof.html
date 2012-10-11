@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Core:Allof Test</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="./../../../style.css" rel="Stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Allof</h1>
+    
+    <h2>Syntax</h2>
+    <p>
+      allof <em>&lt;tests: <a href="./../../atoms/core/testlist.html">test-list</a>&gt;</em>
+    </p>
+             
+    <h2>Description</h2>
+    <p>
+      The allof test performs a logical AND on the tests supplied to it. 
+    </p>
+
+    <h2>Example</h2>
+    <div>
+      <code>
+        if anyof (exists ["From", "Date"],<br/>
+             header :contains "from" "fool@example.edu", <br/>
+             header :matches "Subject" ["*money*","*Viagra*"])<br/> 
+             {<br/>
+                discard;<br/>
+             }<br/>
+      </code>
+    </div>
+        
+    <h2>Module</h2>
+    <p>
+      Core : Requires no import statement
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC3028
+    </p> 
+  </body>
+</html>

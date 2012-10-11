@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Core:Fileinto Action</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="./../../../style.css" rel="Stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>fileinto</h1>
+    
+    <h2>Syntax</h2>
+    <p>
+      fileinto <em>&lt;folder: <a href="./../../atoms/core/string.html">string</a>&gt;</em> ;
+    </p>
+    
+    <h2>Description</h2>
+    <p>
+      The "fileinto" action delivers the message into a specified folder.
+    </p>
+
+    <h2>Example</h2>
+    <p>
+      In the following script, any matching message is filed into folder "INBOX.harassment".
+    </p>
+    <div>
+      <code>
+        require "fileinto";<br/>
+        if header :contains ["from"] "coyote" {<br/>
+           fileinto "INBOX.harassment";<br/>
+        }
+      </code>
+    </div>
+        
+    <h2>Module</h2>
+    <p> 
+      Core : <a href="./../../control/core/require.html">require "fileinto";</a> 
+      statement needed
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC3028
+    </p> 
+  </body>
+</html>

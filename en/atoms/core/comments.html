@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Core:Comments</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="./../../../style.css" rel="Stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Comments</h1>
+    
+    <h2>Syntax</h2>
+    <p>
+      <code>"#" <em> *(CHAR) CRLF </em></code> 
+    </p>
+    <p>
+      <code>"/*" <em> *(CHAR) </em> "*/"</code>
+    </p>
+                 
+    <h2>Description</h2>
+    <p>
+      Two types of comments are offered. Comments are semantically
+      equivalent to whitespace and can be used anyplace that whitespace is
+      (with one exception in multi-line strings).
+    </p>
+    <p>
+      Hash comments begin with a "#" character that is not contained within
+      a string and continue until the next Linebreak (CRLF).
+    </p>
+    <p>
+      Bracketed comments begin with the token "/*" and end with "*/" outside
+      of a string.  Bracketed comments may span multiple lines. Bracketed
+      comments do not nest.
+    </p>
+
+    <h2>Example</h2>
+    <div>
+      <code>
+        if size :over 100K { # this is a comment<br />
+        &nbsp;&nbsp;&nbsp;discard;<br />
+        }<br />   
+      </code>
+    </div>
+    <p>
+      The above script is shows a hash comment. The script below a bracketed comment. 
+    </p>
+    <div>
+      <code>    
+        if size :over 100K { /* this is a comment<br />
+        &nbsp;&nbsp;&nbsp;this is still a comment */ discard /* this is a comment<br />
+        &nbsp;&nbsp;&nbsp;*/ ;<br />
+        }<br />
+      </code>
+    </div>
+        
+    <h2>Module</h2>
+    <p>
+      Core : Requires no import statement
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC3028
+    </p> 
+  </body>
+</html>

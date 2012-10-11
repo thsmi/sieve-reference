@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Core:Address Part Operator</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="./../../../style.css" rel="Stylesheet" type="text/css" />
+  </head>
+  <body>
+2.7.2.   Comparisons Across Character Sets
+
+   All Sieve scripts are represented in UTF-8, but messages may involve
+   a number of character sets.  In order for comparisons to work across
+   character sets, implementations SHOULD implement the following
+   behavior:
+
+      Implementations decode header charsets to UTF-8.  Two strings are
+      considered equal if their UTF-8 representations are identical.
+      Implementations should decode charsets represented in the forms
+      specified by [MIME] for both message headers and bodies.
+      Implementations must be capable of decoding US-ASCII, ISO-8859-1,
+      the ASCII subset of ISO-8859-* character sets, and UTF-8.
+
+   If implementations fail to support the above behavior, they MUST
+   conform to the following:
+
+      No two strings can be considered equal if one contains octets
+      greater than 127.
+
+2.7.3.   Comparators
+
+   In order to allow for language-independent, case-independent matches,
+   the match type may be coupled with a comparator name.  Comparators
+   are described for [ACAP]; a registry is defined for ACAP, and this
+   specification uses that registry.
+
+   ACAP defines multiple comparator types.  Only equality types are used
+   in this specification.
+
+   All implementations MUST support the "i;octet" comparator (simply
+   compares octets) and the "i;ascii-casemap" comparator (which treats
+   uppercase and lowercase characters in the ASCII subset of UTF-8 as
+   the same).  If left unspecified, the default is "i;ascii-casemap".
+
+   Some comparators may not be usable with substring matches; that is,
+   they may only work with ":is".  It is an error to try and use a
+   comparator with ":matches" or ":contains" that is not compatible with
+   it.
+
+   A comparator is specified by the ":comparator" option with commands
+   that support matching.  This option is followed by a string providing
+   the name of the comparator to be used.  For convenience, the syntax
+   of a comparator is abbreviated to "COMPARATOR", and (repeated in
+   several tests) is as follows:
+
+   Syntax:   ":comparator" &lt;comparator-name: string&gt;
+
+   So in this example,
+
+   Example:  if header :contains :comparator "i;octet" "Subject"
+                "MAKE MONEY FAST" {
+                   discard;
+             }
+
+   would discard any message with subjects like "You can MAKE MONEY
+   FAST", but not "You can Make Money Fast", since the comparator used
+   is case-sensitive.
+
+   Comparators other than i;octet and i;ascii-casemap must be declared
+   with require, as they are extensions.  If a comparator declared with
+   require is not known, it is an error, and execution fails.  If the
+   comparator is not declared with require, it is also an error, even if
+   the comparator is supported.  (See 2.10.5.)
+
+   Both ":matches" and ":contains" match types are compatible with the
+   "i;octet" and "i;ascii-casemap" comparators and may be used with
+   them.
+
+   It is an error to give more than one of these arguments to a given
+   command.
+  </body>
+</html>   

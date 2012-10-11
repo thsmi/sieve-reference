@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Core:Header Test</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="./../../../style.css" rel="Stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Header</h1>
+    
+    <h2>Syntax</h2>
+    <p>
+      header
+      <em>[<a href="./../../operators/core/comparator.html">COMPARATOR</a>]</em>
+      <em>[<a href="./../../operators/core/matchtype.html">MATCH-TYPE</a>]</em>
+      <em>&lt;header-names: <a href="./../../atoms/core/stringlist.html">string-list</a>&gt;</em>
+      <em>&lt;key-list: <a href="./../../atoms/core/stringlist.html">string-list</a>&gt;</em>
+    </p>
+             
+    <h2>Description</h2>
+    <p>
+      The "header" test evaluates to true if any header name matches any
+      key. The type of match is specified by the optional match argument,
+      which defaults to ":is" if not specified.
+
+      Like address and envelope, this test returns true if any combination
+      of the string-list and key-list arguments match.
+
+      If a header listed in the header-names argument exists, it contains
+      the null key (""). However, if the named header is not present, it
+      does not contain the null key. So if a message contained the header
+    </p>
+    <blockquote>
+      <p> 
+        X-Caffeine: C8H10N4O2
+      </p>
+    </blockquote>
+    <p>  
+      these tests on that header evaluate as follows:
+    </p>
+    <blockquote>
+      <p>
+        header :is ["X-Caffeine"] [""]  --  evaluates to false<br/>
+        header :contains ["X-Caffeine"] [""]  -- evaluates to true<br/>
+      </p>
+    </blockquote>
+        
+    <h2>Module</h2>
+    <p>
+      Core : Requires no import statement
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC3028
+    </p> 
+  </body>
+</html>           

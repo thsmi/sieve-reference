@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Core:Match type Operator</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="./../../../style.css" rel="Stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Match type</h1>
+    
+    <h2>Syntax</h2>
+    <p>
+      ":is" / ":contains" / ":matches"
+    </p>
+             
+    <h2>Description</h2>
+    <p>
+      There are three match types describing the matching :  ":is", ":contains",
+      and ":matches".  Match type arguments are supplied to those commands 
+      which allow them to specify what kind of match is to be performed.
+    </p>
+    <p>
+      These are used as tagged arguments to tests that perform string
+      comparison.
+    </p>
+    <p>
+     The ":contains" match type describes a substring match. If the value
+     argument contains the key argument as a substring, the match is true.
+     For instance, the string "frobnitzm" contains "frob" and "nit", but
+     not "fbm". The null key ("") is contained in all values.
+    </p>
+    <p>
+     The ":is" match type describes an absolute match; if the contents of
+     the first string are absolutely the same as the contents of the
+     second string, they match. Only the string "frobnitzm" is the string
+     "frobnitzm". The null key ":is" and only ":is" the null value.
+    </p>
+    <p>
+     The ":matches" version specifies a wildcard match using the
+     characters "*" and "?". "*" matches zero or more characters, and "?"
+     matches a single character. "?" and "*" may be escaped as "\\?" and
+     "\\*" in strings to match against themselves. The first backslash
+     escapes the second backslash; together, they escape the "*". This is
+     awkward, but it is commonplace in several programming languages that
+     use globs and regular expressions.
+    </p>
+    <p>
+     In order to specify what type of match is supposed to happen,
+     commands that support matching take optional tagged arguments
+     ":matches", ":is", and ":contains". Commands default to using ":is"
+     matching if no match type argument is supplied. Note that these
+     modifiers may interact with comparators; in particular, some
+     comparators are not suitable for matching with ":contains" or
+     ":matches". It is an error to use a comparator with ":contains" or
+     ":matches" that is not compatible with it.
+    </p>
+    <p>
+     It is an error to give more than one of these arguments to a given
+     command. 
+    </p>
+        
+    <h2>Module</h2>
+    <p>
+      Core : Requires no import statement
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC3028
+    </p> 
+  </body>
+</html>

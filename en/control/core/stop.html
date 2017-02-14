@@ -1,10 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
   <head>
     <title>Core:Stop Control Structure</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <link href="./../../../style/style.css" rel="Stylesheet" type="text/css" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link href="./../../../style/style.css" rel="Stylesheet" type="text/css">
   </head>
   <body>
     <h1>Stop</h1>
@@ -23,17 +22,17 @@
     <h2>Example</h2>
     <div>
       <code>
-        require "reject";<br/>
-        <br/>
-        # Reject any large messages<br/>
-        if size :over 1M<br/>
-        {<br/>
-        &nbsp;&nbsp;reject text: "Do not send me large attachments";<br/>
-        &nbsp;&nbsp;# Stops the Script execution immediately <br/>
-        &nbsp;&nbsp;stop;<br/>
-        }<br/>
-        <br/>
-        # Do more processing...<br/>
+        require "reject";<br>
+        <br>
+        # Reject any large messages<br>
+        if size :over 1M<br>
+        {<br>
+        &nbsp;&nbsp;reject text: "Do not send me large attachments";<br>
+        &nbsp;&nbsp;# Stops the Script execution immediately <br>
+        &nbsp;&nbsp;stop;<br>
+        }<br>
+        <br>
+        # Do more processing...<br>
       </code>
     </div>    
         

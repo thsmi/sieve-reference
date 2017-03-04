@@ -1,10 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
   <head>
     <title>Core:If Control Structure</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <link href="./../../../style/style.css" rel="Stylesheet" type="text/css" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link href="./../../../style/style.css" rel="Stylesheet" type="text/css">
   </head>
   <body>
     <h1>If</h1>
@@ -53,14 +52,14 @@
     <h2>Example</h2>
     <div>
       <code>
-        require "fileinto";<br/>
-        if header :contains "from" "coyote" {<br/>
-        &nbsp;&nbsp;&nbsp;redirect "acm@example.edu";<br/>
-        } elsif header :contains ["subject"] ["$$$"] {<br/>
-        &nbsp;&nbsp;&nbsp;discard;<br/>
-        } else {<br/>
-        &nbsp;&nbsp;&nbsp;fileinto "INBOX";<br/>
-        }<br/>
+        require "fileinto";<br>
+        if header :contains "from" "coyote" {<br>
+        &nbsp;&nbsp;&nbsp;redirect "acm@example.edu";<br>
+        } elsif header :contains ["subject"] ["$$$"] {<br>
+        &nbsp;&nbsp;&nbsp;discard;<br>
+        } else {<br>
+        &nbsp;&nbsp;&nbsp;fileinto "INBOX";<br>
+        }<br>
       </code>
     </div>
             

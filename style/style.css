@@ -15,8 +15,7 @@ h2 {
 	font-weight: normal;
 }
 
-body 
-{
+body {
   font-family: Georgia, Bitstream Vera, Serif;
   font-size: 10pt;
   padding: 0px;
@@ -25,31 +24,27 @@ body
   color: black;
 }
 
-code
-{
+code {
   color: #666;
+  white-space: pre-line
 }
 
-p 
-{
+p {
   text-align:justify;
   line-height: 1.7em;
   margin-bottom: 2em;
 }
 
-a 
-{
+a {
   color: #555;
   text-decoration:underline;
 }
 
-a:visited 
-{
+a:visited {
   color: #666;
 }
 
-a:hover 
-{
+a:hover {
   color: black;
   background-color: lightgray;
 }

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Body:Body Transform Operator</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link href="./../../../style/style.css" rel="Stylesheet" type="text/css">
+  </head>
+  <body>
+    <h1>Body Transform</h1>
+
+    <h2>Syntax</h2>
+    <p>
+      ":raw" / ":content" <em>&lt;content-types: <a href="./../../atoms/core/stringlist.html">string-list</a>&gt;</em> / ":text"
+    </p>
+
+    <h2>Description</h2>
+    <p>
+      Prior to matching content in a message body, "transformations" can be
+      applied that filter and decode certain parts of the body.  These
+      transformations are selected by a "BODY-TRANSFORM" keyword parameter.
+    </p>
+    <p>
+      The default transformation is :text.
+    </p>
+    <p>
+      The ":raw" transform matches against the entire undecoded body of a
+      message as a single item.
+    </p>
+    <p>
+      If the specified body-transform is ":raw", the [MIME] structure of
+      the body is irrelevant.  The implementation MUST NOT remove any
+      transfer encoding from the message, MUST NOT refuse to filter
+      messages with syntactic errors (unless the environment it is part of
+      rejects them outright), and MUST treat multipart boundaries or the
+      MIME headers of enclosed body parts as part of the content being
+      matched against, instead of MIME structures to interpret.
+    </p>
+    <p>
+      If the body transform is ":content", the MIME parts that have the
+      specified content types are matched against independently.
+    </p>
+    <p>
+      If an individual content type begins or ends with a '/' (slash) or
+      contains multiple slashes, then it matches no content types.
+      Otherwise, if it contains a slash, then it specifies a full
+      &lt;type>/&lt;subtype> pair, and matches only that specific content type.
+      If it is the empty string, all MIME content types are matched.
+      Otherwise, it specifies a &lt;type> only, and any subtype of that type
+      matches it.
+    </p>
+    <p>
+      The search for MIME parts matching the :content specification is
+      recursive and automatically descends into multipart and
+      message/rfc822 MIME parts.  All MIME parts with matching types are
+      searched for the key strings.  The test returns true if any
+      combination of a searched MIME part and key-list argument match.
+    </p>
+    <p>
+      If the :content specification matches a multipart MIME part, only the
+      prologue and epilogue sections of the part will be searched for the
+      key strings, treating the entire prologue and the entire epilogue as
+      separate strings; the contents of nested parts are only searched if
+      their respective types match the :content specification.
+    </p>
+    <p>
+      If the :content specification matches a message/rfc822 MIME part,
+      only the header of the nested message will be searched for the key
+      strings, treating the header as a single string; the contents of the
+      nested message body parts are only searched if their content type
+      matches the :content specification.
+    </p>
+    <p>
+      For other MIME types, the entire part will be searched as a single
+      string.
+    </p>
+    <p>
+      (Matches against container types with an empty match string can be
+      useful as tests for the existence of such parts.)
+    </p>
+    <p>
+      The ":text" body transform matches against the results of an
+      implementation's best effort at extracting UTF-8 encoded text from a
+      message.
+    </p>
+    <p>
+      It is unspecified whether this transformation results in a single
+      string or multiple strings being matched against.  All the text
+      extracted from a given non-container MIME part MUST be in the same
+      string.
+    </p>
+    <p>
+      In simple implementations, :text MAY be treated the same as :content
+      "text".
+    </p>
+    <p>
+      Sophisticated implementations MAY strip mark-up from the text prior
+      to matching, and MAY convert media types other than text to text
+      prior to matching.
+    </p>
+    <p>
+      (For example, they may be able to convert proprietary text editor
+      formats to text or apply optical character recognition algorithms to
+      image data.)
+    </p>
+
+    <h2>Module</h2>
+    <p>
+      Body : Requires import of the <code>"body"</code> capability
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC5173
+    </p>
+  </body>
+</html>

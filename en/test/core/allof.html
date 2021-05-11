@@ -21,7 +21,7 @@
     <h2>Example</h2>
     <div>
       <code>
-        if anyof (exists ["From", "Date"],<br>
+        if allof (exists ["From", "Date"],<br>
              header :contains "from" "fool@example.edu", <br>
              header :matches "Subject" ["*money*","*Viagra*"])<br> 
              {<br>

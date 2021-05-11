@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ext:Body Test</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link href="./../../../style/style.css" rel="Stylesheet" type="text/css">
+  </head>
+  <body>
+    <h1>Body</h1>
+
+    <h2>Syntax</h2>
+    <p>
+      body
+      <em>[<a href="./../../operators/core/comparator.html">COMPARATOR</a>]</em>
+      <em>[<a href="./../../operators/core/matchtype.html">MATCH-TYPE</a>]</em>
+      <em>[<a href="./../../operators/ext/bodytransform.html">BODY-TRANSFORM</a>]</em>
+      <em>&lt;key-list: <a href="./../../atoms/core/stringlist.html">string-list</a>&gt;</em>
+    </p>
+
+    <h2>Description</h2>
+    <p>
+      The body test matches content in the body of an email message, that
+      is, anything following the first empty line after the header.  (The
+      empty line itself, if present, is not considered to be part of the
+      body.)
+    </p>
+    <p>
+      The COMPARATOR and MATCH-TYPE keyword parameters are defined in
+      [SIEVE].  As specified in Sections 2.7.1 and 2.7.3 of [SIEVE], the
+      default COMPARATOR is "i;ascii-casemap" and the default MATCH-TYPE is
+      ":is".
+    </p>
+    <p>
+      The BODY-TRANSFORM is a keyword parameter that governs how a set of
+      strings to be matched against are extracted from the body of the
+      message.  If a message consists of a header only, not followed by an
+      empty line, then that set is empty and all "body" tests return false,
+      including those that test for an empty string.  (This is similar to
+      how the "<a href="./../core/header.html">header</a>" test always fails when the named header fields
+      aren't present.)  Otherwise, the transform must be followed as
+      defined <a href="./../../operators/ext/bodytransform.html">on this page</a>.
+    </p>
+    <p>
+      Note that the transformations defined here do <em>not</em> match against
+      each line of the message independently, so the strings will usually
+      contain CRLFs.  How these can be matched is governed by the
+      comparator and match-type.  For example, with the default comparator
+      of "i;ascii-casemap", they can be included literally in the key
+      strings, or be matched with the "*" or "?" wildcards of the :matches
+      match-type, or be skipped with :contains.
+    </p>
+
+    <h2>Example</h2>
+    <div>
+      <code>
+        if body :raw :contains "MAKE MONEY FAST" {
+        &nbsp;&nbsp;discard;
+        }
+      </code>
+    </div>
+
+    <h2>Module</h2>
+    <p>
+      Body : Requires import of the <code>"body"</code> capability
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC5173
+    </p>
+  </body>
+</html>

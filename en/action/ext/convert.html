@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Convert:Convert Action</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link href="./../../../style/style.css" rel="Stylesheet" type="text/css">
+  </head>
+  <body>
+    <h1>Convert</h1>
+
+    <h2>Syntax</h2>
+    <p>
+      convert
+      <em>&lt;quoted-from-media-type : <a href="./../../atoms/core/string.html">string</a>&gt;</em>
+      <em>&lt;quoted-to-media-type : <a href="./../../atoms/core/string.html">string</a>&gt;</em>
+      <em>&lt;transcoding-params : <a href="./../../atoms/core/stringlist.html">string-list</a>&gt;</em>
+      ;
+    </p>
+
+    <h2>Description</h2>
+    <p>
+      The "convert" action specifies that all body parts with a media type
+      [RFC2046] (sometimes called "MIME type") equal to
+      <em>&lt;quoted-from-media-type></em> be converted to the media type in
+      <em>&lt;quoted-to-media-type></em> using conversion parameters specified in
+      <em>&lt;transcoding-params></em>.  Each conversion parameter value has the
+      following syntax: "<em>&lt;transcoding-param-name></em>=<em>&lt;transcoding-param-value></em>",
+      where <em>&lt;transcoding-param-name></em> and <em>&lt;transcoding-param-value></em>
+      are defined in CONVERT [RFC5259]. Messages that don't have any body
+      parts with the <em>&lt;quoted-from-media-type></em> media type are not affected
+      by the conversion.
+    </p>
+    <p>
+      The "convert" action can be used with Sieve MIME Part Tests
+      [RFC5703], in the case that some, but not all of the body parts need
+      to be converted, or where different body parts might require
+      different conversions.  When the "convert" action appears in a
+      "foreverypart" loop, it applies only to the body part being
+      processed, and not to any other body parts.
+    </p>
+    <p>
+      When the "convert" action appears outside a "foreverypart" loop, the
+      conversion applies equally to all body parts -- that is, all body
+      parts that have the "quoted-from-media-type" are converted, using the
+      same transcoding parameters.
+    </p>
+    <p>
+      A single "convert" action will only apply once to any body part.  If,
+      for example,
+      <code>convert "image/jpeg" "image/jpeg" ["pix-x=100","pix-y=120"]</code>
+      converts a larger JPEG image to the smaller 100 x 120
+      size, that will be the end of that "convert" action on that body
+      part.  The action will not see a "new" JPEG body part to process,
+      resulting from the conversion.
+    </p>
+    <p>
+      If a "convert" action cannot be completed -- perhaps because the
+      conversion failed, or because the requested conversion is not
+      available -- that "convert" action MUST terminate and leave the
+      message unchanged, rolling back any other conversions done by that
+      action.  The script processing continues, and prior or subsequent
+      "convert" actions are not affected.  No error condition is raised,
+      and no partial conversions from a single "convert" action are
+      allowed.
+    </p>
+
+    <h2>Example</h2>
+    <p>
+      In the following example, all "image/tiff" body parts of the message
+      are converted to "image/jpeg" with image resolution of 320x240
+      pixels.  The converted message is then subject to the implicit keep.
+    </p>
+    <div>
+      <code>
+         require ["convert"];
+         convert "image/tiff" "image/jpeg" ["pix-x=320","pix-y=240"];
+      </code>
+    </div>
+
+    <h2>Module</h2>
+    <p>
+      Convert : Requires import of the <code>"convert"</code> capability
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC6558<br>
+      RFC5259
+    </p>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Convert:Convert Test</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link href="./../../../style/style.css" rel="Stylesheet" type="text/css">
+  </head>
+  <body>
+    <h1>Convert</h1>
+
+    <h2>Syntax</h2>
+    <p>
+      convert
+      <em>&lt;quoted-from-media-type : <a href="./../../atoms/core/string.html">string</a>&gt;</em>
+      <em>&lt;quoted-to-media-type : <a href="./../../atoms/core/string.html">string</a>&gt;</em>
+      <em>&lt;transcoding-params : <a href="./../../atoms/core/stringlist.html">string-list</a>&gt;</em>
+      ;
+    </p>
+
+    <h2>Description</h2>
+    <p>
+      To simplify testing for supported and successful conversions, the
+      "<a href="./../../action/ext/convert.html">convert</a>" action can also be used as a test.  As such, it will
+      attempt to perform the requested conversion(s) and will evaluate to
+      "false" if and only if at least one conversion failed.  The failure
+      can be because a conversion was unsupported or because the data could
+      not be converted (perhaps it had been corrupted in transit or
+      mislabeled at its origin).
+    </p>
+    <p>
+      This creates a new type of Sieve action, a "testable action".  The
+      usage as a test is exactly the same as for an action, and it doubles
+      as an action and a test of the action's result at the same time.  See
+      below for an example of how this test can be used.
+    </p>
+
+    <h2>Example</h2>
+    <p>
+      In the following example, all "image/tiff" body parts of the message
+      are converted to "image/jpeg".  If the conversions
+      were successful, those messages are then filed into a mailbox called
+      "INBOX.pics".
+    </p>
+    <div>
+      <code>
+        require ["fileinto", "convert"];
+        if (convert "image/tiff" "image/jpeg" ["pix-x=320","pix-y=240"])
+        {
+        &nbsp;&nbsp;fileinto "INBOX.pics";
+        }
+      </code>
+    </div>
+
+    <h2>Module</h2>
+    <p>
+      Convert : Requires import of the <code>"convert"</code> capability
+    </p>
+
+    <h2>Resources</h2>
+    <p>
+      RFC6558<br>
+      RFC5259
+    </p>
+  </body>
+</html>
